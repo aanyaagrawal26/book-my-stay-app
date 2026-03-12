@@ -66,6 +66,27 @@ class RoomInventory {
     public void updateAvailability(String roomType, int count) {
         roomAvailability.put(roomType, count);
     }
+
+    /**
+     * NEW METHOD (Required for Use Case 9)
+     * Checks if requested room type is available.
+     */
+    public boolean isAvailable(String roomType) {
+
+        if(roomType.equals("Single")) {
+            return roomAvailability.get("Single Room") > 0;
+        }
+
+        if(roomType.equals("Double")) {
+            return roomAvailability.get("Double Room") > 0;
+        }
+
+        if(roomType.equals("Suite")) {
+            return roomAvailability.get("Suite Room") > 0;
+        }
+
+        return false;
+    }
 }
 
 /**
@@ -74,17 +95,6 @@ class RoomInventory {
  * =============================================================
  *
  * Use Case 3: Centralized Room Inventory Management
- *
- * Description:
- * This class demonstrates how room availability
- * is managed using a centralized inventory.
- *
- * Room objects are used to retrieve pricing
- * and room characteristics.
- *
- * No booking or search logic is introduced here.
- *
- * @version 3.1
  */
 
 public class UseCase3InventorySetup {
